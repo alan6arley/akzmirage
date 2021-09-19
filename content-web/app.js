@@ -4,9 +4,12 @@ const path = require('path');
 const request = require('request');
 
 const app = express();
+const appInsights = require("applicationinsights");
+appInsights.setup("0c9821af-a89d-45fd-b318-fbc25493fe9a");
+appInsights.start();
 
 app.use(express.static(path.join(__dirname, 'dist/content-web')));
-const contentApiUrl = process.env.CONTENT_API_URL || "http://localhost:3001";
+const contentApiUrl = process.env.CONTENT_API_URL || "http://13.93.234.28:3001";
 
 
 function getSessions(cb) {
